@@ -9,17 +9,13 @@ module Types
 
     # TODO: remove me
     field :test_field, String, null: false,
-      description: "An example field added by the generator"
+      description: "An example field added by the generator" do
+        argument :name, String, required: true
+      end
 
-    field :les_field, String, null: false
-
-    def test_field
-      "Hello World!"
+    def test_field(name:)
+      Rails.logger.info context[:time]
+      "Hello #{name}!"
     end
-
-    def les_field
-      "Hey, cool girl"
-    end
-
   end
 end

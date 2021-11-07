@@ -7,7 +7,12 @@ class Types::AuthorType < Types::BaseObject
   field :yob, Int, null: false
   field :is_alive, Boolean, null: true
   field :full_name, String, null: true
+
+  # custom field type
   field :coordinates, Types::CoordinatesType, null: false
+
+  # array field example (recognized bc is method on model)
+  field :publication_years, [Int], null: false
 
   def full_name
     ([object.first_name, object.last_name].compact).join(" ")
@@ -26,5 +31,6 @@ end
 #       latitude
 #       longitude
 #     }
+#     publicationYears
 #   }
 # }

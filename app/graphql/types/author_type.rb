@@ -7,4 +7,8 @@ class Types::AuthorType < Types::BaseObject
   field :yob, Int, null: false
   field :is_alive, Boolean, null: true
   field :full_name, String, null: true
+
+  def full_name
+    ([object.first_name, object.last_name].compact).join(" ")
+  end
 end
